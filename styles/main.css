@@ -2,16 +2,6 @@ html {
     font-family: 'Montserrat', sans-serif;
 }
 
-h1:hover {
-    color: white;
-    background: black;
-    transition: .3s;
-}
-
-h1 {
-    transition: .3s;
-}
-
 body {
     background: #d8b2a1;
 }
