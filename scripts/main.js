@@ -1,13 +1,4 @@
-var shadow = function (element, source) {
-    var bounds = element.getBoundingClientRect();
-    var rect = new Rectangle(bounds.left, bounds.top, bounds.width, bounds.height);
-    var vertices = visibleVertices(rect, source);
-    var path = new Path(vertices.concat(source));
-    path.closed = true;
-    path.fillColor = "black";
-    console.log(path);
-    return path;
-}
+var transparent = new Color(0, 0, 0, 0);
 
 var updateShadow = function (element, source, path) {
     var bounds = element.getBoundingClientRect();
@@ -18,18 +9,26 @@ var updateShadow = function (element, source, path) {
     var outerpoints = [];
     for (var i = 0; i < vertices.length; i++) {
         path.add(vertices[i]);
-        //        if (i == 0 || i == vertices.length - 1) {
         outerpoints.push((vertices[i] - source).normalize(30) + vertices[i]);
-        //        }
     }
     for (var i = outerpoints.length - 1; i >= 0; i--) {
         path.add(outerpoints[i]);
     }
     path.closed = true;
-    path.fillColor = new Color(0, 0, 0);
+    path.fillColor = 'black';
+    //    path.fillColor = {
+    //        gradient: {
+    //            stops: ['black', transparent],
+    //        },
+    //        origin: rect.center,
+    //        destination: (rect.center - source).normalize(200) + rect.center
+    //    };
     return path;
 }
 
+
+// credz to stackoverflow for this clever solution
+// sort list v by values in list a
 var getSorted = function (v, a) {
     var all = [];
 
@@ -91,7 +90,7 @@ var center = new Point(view.size.width / 2, view.size.height / 2);
 var paths = [];
 var circles = [];
 for (var i = 0; i < obstacles.length; i++) {
-    paths.push(shadow(obstacles[i], center));
+    paths.push(new Path());
 }
 
 view.onMouseMove = function (event) {
