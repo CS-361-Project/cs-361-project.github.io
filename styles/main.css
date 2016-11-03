@@ -1,3 +1,28 @@
+html,
+body,
+canvas {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+canvas {
+    position: fixed;
+    z-index: -10;
+}
+
+body {
+    text-align: center;
+}
+
+li a {
+    padding: 10px;
+}
+
 html {
     font-family: 'Montserrat', sans-serif;
 }
@@ -11,6 +36,7 @@ ul {
 }
 
 li {
+    margin: 30px;
     padding: 10px;
     color: white;
 }
@@ -31,13 +57,19 @@ li:nth-child(4) {
     background: #c4e1c6;
 }
 
+li:nth-child(5) {
+    background: #3D5A80;
+}
+
 li a {
     color: white;
 }
 
 .container {
     display: flex;
+    height: auto;
     align-items: center;
+    justify-content: center;
 }
 
 .container .button {
@@ -85,4 +117,16 @@ li:hover a:after {
     height: 2px;
     left: 0;
     transition: all ease-in-out .2s;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+footer p {
+    color: #666;
+    font-size: 12px;
+    padding: 0 5px;
 }
